@@ -15,6 +15,12 @@ question('3', X):-
 	X = 'A Vexillologist Is A Person Who Studies?'.
 question('4', X):-
 	X = 'Kessler Syndrome Is An Astronomy Theory That Predicts?'.
+question('5', X):-
+  X = 'The Largest Canyon In Our Solar System Is On?'.
+question('5', X):-
+  X = 'The Largest Canyon In Our Solar System Is On?'.
+question('5', X):-
+  X = 'The Largest Canyon In Our Solar System Is On?'.
 
 % Trivia Questions Options
 option('1',X):-
@@ -25,6 +31,8 @@ option('3',X):-
 	X = '1. Witchcraft   2. Flags   3. Bullying   4. Mathematical Paradoxes'.
 option('4',X):-
 	X = '1. The Moon Will Collide With Earth   2. The Sun\'s Core Will Destabilize   3. Earth Orbits Will Become Unusable   4. Humans Will Never Leave Earth'.
+option('5', X):-
+  X = '1. Mars   2. Earth   3. Venus   4. Neptune'.
 
 % Trivia Questions Solutions
 trivia_answer('1','1',X):-
@@ -47,6 +55,13 @@ trivia_answer('4','3',X):-
 trivia_answer('4',Y, X):-
 	Y \= '3',
 	X = 'Wrong! Correct Answer is Earth Orbits Will Become Unusable'.
+trivia_answer('5','1',X):-
+  X = 'Yes, Mars is the correct answer.'.
+trivia_answer('5',Y, X):-
+  Y \= '1',
+  X = 'Wrong! Correct Answer is Mars'.
+
+
 
 % Jokes
 joke(1,Y):-
@@ -94,13 +109,13 @@ quote(1,Y):-
 quote(2,Y):-
   Y = 'Don\'t wait. The time will never be just right. -Napoleon Hill'.
 quote(3,Y):-
-  Y = 'Don’t regret the past, just learn from it. -Ben Ipock'.
+  Y = 'Don\'t regret the past, just learn from it. -Ben Ipock'.
 quote(4,Y):-
   Y = 'Believe you can and you’re halfway there. -Theodore Roosevelt'.
 quote(5,Y):-
   Y = 'Life is what happens while you are busy making other plans. -John Lennon.'.
 quote(6,Y):-
-  Y = 'Be so good they can’t ignore you. -Steve Martin.'.
+  Y = 'Be so good they can\'t ignore you. -Steve Martin.'.
 quote(7,Y):-
   Y = 'Life is not a problem to be solved, but a reality to be experienced. -Soren Kierkegaard.'.
 quote(8,Y):-

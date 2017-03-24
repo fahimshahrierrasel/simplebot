@@ -150,7 +150,7 @@ public class BotWindow {
 		}
 		DefaultListModel<String> items2 = bot.getQueryResult("trivia","option");
 		for(int i=0; i < items2.size(); i++){
-			listItems.add(listItems.size(), "Bot: " + items2.getElementAt(i));
+			listItems.add(listItems.size(), items2.getElementAt(i));
 		}
 	}
 

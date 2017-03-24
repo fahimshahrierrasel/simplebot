@@ -8,7 +8,6 @@ import org.jpl7.Variable;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Bot {
@@ -33,20 +32,18 @@ public class Bot {
 	public DefaultListModel<String> getQueryResult(String type, String word)
     {
 		DefaultListModel<String> listItems = new DefaultListModel<>();
-        Query q3 = null;
+        Query query = null;
 
         if ("general".equals(type)) {
             String queryKeyword = databaseController.getFact(word);
-            q3 = getQuery(queryKeyword, queryKeyword, queryKeyword);
+            query = getQuery(queryKeyword, queryKeyword, queryKeyword);
         }
         else if("movie".equals(type)){
-            q3 = getQuery("movie", "Movie", "Movie");
+            query = getQuery("movie", "Movie", "Movie");
         }
         else if("trivia".equals(type)){
             if ("question".equals(word)) {
                 do{
-                    Random random = new Random();
-
                     questionNo = ThreadLocalRandom.current().nextInt(1,4+1);
                     System.out.println(questionNo);
                 }while(askedQuestion.contains(questionNo));
@@ -54,17 +51,16 @@ public class Bot {
             }
 
             if ("question".equals(word) || "option".equals(word)) {
-                q3 = getQuery(word, String.valueOf(questionNo), "Movie");
+                query = getQuery(word, String.valueOf(questionNo), "Movie");
             }
             else
-                q3 = getQuery("trivia_answer", String.valueOf(questionNo), word);
+                query = getQuery("trivia_answer", String.valueOf(questionNo), word);
         }
 
-        if(q3 != null && q3.hasSolution()){
+        if(query != null && query.hasSolution()){
             Map<String, Term> solution;
-            while ( q3.hasMoreSolutions() ){
-                solution = q3.nextSolution();
-
+            while ( query.hasMoreSolutions() ){
+                solution = query.nextSolution();
                 String answer = solution.get("Answer").toString();
                 answer = answer.replace("\'","");
                 listItems.addElement(answer);
@@ -73,7 +69,6 @@ public class Bot {
         else{
         	listItems.addElement("There is no solution here");
         }
-
         return listItems;
     }
 
@@ -96,6 +91,12 @@ public class Bot {
             case "trivia_answer":
                 query = new Query("trivia_answer", new Term[]{new Atom(questionNo),
                         new Atom(result), queryAnswer});
+                break;
+            case "advice":
+                query = new Query("quotes", new Term[]{queryAnswer});
+                break;
+            case "jokes":
+                query = new Query("jokes", new Term[]{queryAnswer});
                 break;
             default:
                 query = new Query("undefined", new Term[] {queryAnswer});
