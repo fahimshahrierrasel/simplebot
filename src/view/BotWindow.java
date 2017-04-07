@@ -33,7 +33,7 @@ public class BotWindow {
 		// Layouts
 		frame = new JFrame();
 		frame.setTitle("Simple Bot");
-		frame.setBounds(100, 100, 750, 300);
+		frame.setBounds(100, 100, 640, 360);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -45,6 +45,7 @@ public class BotWindow {
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 		JPanel sidePanel = new JPanel();
+		sidePanel.setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().add(sidePanel, BorderLayout.WEST);
 		sidePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -54,26 +55,35 @@ public class BotWindow {
 		
 		// GUI Components
 		JList<String> list = new JList<>(listItems);
-		list.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		list.setFont(new Font("Serif", Font.ITALIC, 14));
 		scrollPane.setViewportView(list);
 		//list.setCellRenderer(new QueryRenderer());
 		
 		query = new JTextField();
+		query.setToolTipText("Write Here. Ex: who are you");
+		query.setFont(new Font("Serif", Font.ITALIC, 14));
 		panel.add(query);
 		query.setColumns(10);
 		
 		JButton sendQuery = new JButton("Send");
+		sendQuery.setForeground(Color.BLACK);
+		sendQuery.setToolTipText("Click to send text");
+		sendQuery.setBackground(Color.GREEN);
+		sendQuery.setFont(new Font("Serif", Font.BOLD, 14));
 		panel.add(sendQuery);
 		
 		rdbtnGeneral = new JRadioButton("General");
+		rdbtnGeneral.setFont(new Font("Serif", Font.BOLD, 13));
 		topicSelector.add(rdbtnGeneral);
 		sidePanel.add(rdbtnGeneral);
 		
 		rdbtnMovie = new JRadioButton("Movie");
+		rdbtnMovie.setFont(new Font("Serif", Font.BOLD, 13));
 		topicSelector.add(rdbtnMovie);
 		sidePanel.add(rdbtnMovie);
 		
 		rdbtnTrivia = new JRadioButton("Geek Trivia");
+		rdbtnTrivia.setFont(new Font("Serif", Font.BOLD, 13));
 		topicSelector.add(rdbtnTrivia);
 		sidePanel.add(rdbtnTrivia);
 

@@ -1,10 +1,21 @@
 % General Statement
 hello(X):-
 	X = 'Hello Welcome to the bot world!'.
-name(X):-
+myname(X):-
 	X = 'I am a simple bot. Created as an AI Project.'.
 undefined(X):-
 	X = 'I have no Idea What you are talking?'.
+mybirthday(X):-
+  X = 'It would be on March, 2017'.
+myage(X):-
+  X = '1 month. See I am a baby now. Fun fact I can communicate with humans.'.
+mylocation(X):-
+  X = 'First of All in Bangladesh then on a Stupid Computer'.
+whoami(X):-
+  X = 'How do I know! You should tell me first. Your name?'.
+mystate(X):-
+  X = 'I am Well, CPU is Ideal and I have enough RAM to run. Thanks for asking.'.
+
 
 % Trivia Questions
 question('1', X):-

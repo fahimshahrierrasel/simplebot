@@ -39,6 +39,17 @@ public class Bot {
             query = getQuery(queryKeyword, queryKeyword, queryKeyword);
         }
         else if("movie".equals(type)){
+            String castMember;
+            String movieName;
+
+            if(word.contains("actor") || word.contains("actress"))
+            {
+                castMember = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
+            }
+            else if(word.contains("movie")){
+                movieName = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
+            }
+
             query = getQuery("movie", "Movie", "Movie");
         }
         else if("trivia".equals(type)){
@@ -76,12 +87,6 @@ public class Bot {
         Variable queryAnswer = new Variable("Answer");
 	    Query query;
 	    switch (keyword){
-            case "hello":
-                query = new Query("hello", new Term[] {queryAnswer});
-                break;
-            case "name":
-                query = new Query("name", new Term[] {queryAnswer});
-                break;
             case "question":
                 query = new Query("question", new Term[]{new Atom(questionNo),queryAnswer});
                 break;
@@ -92,14 +97,8 @@ public class Bot {
                 query = new Query("trivia_answer", new Term[]{new Atom(questionNo),
                         new Atom(result), queryAnswer});
                 break;
-            case "advice":
-                query = new Query("quotes", new Term[]{queryAnswer});
-                break;
-            case "jokes":
-                query = new Query("jokes", new Term[]{queryAnswer});
-                break;
             default:
-                query = new Query("undefined", new Term[] {queryAnswer});
+                query = new Query(keyword, new Term[] {queryAnswer});
                 break;
         }
         return query;
