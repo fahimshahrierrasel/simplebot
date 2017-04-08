@@ -24,10 +24,6 @@ public class Bot {
 	public void clearAskedQuestions(){
 	    askedQuestion.clear();
     }
-	private boolean isThisAskedBefore(int questionNumber) {
-        boolean notAsked = true;
-        return askedQuestion.contains(questionNumber);
-    }
 
 	public DefaultListModel<String> getQueryResult(String type, String word)
     {
@@ -38,24 +34,16 @@ public class Bot {
             String queryKeyword = databaseController.getFact(word);
             query = getQuery(queryKeyword, queryKeyword, queryKeyword);
         }
-        else if("movie".equals(type)){
-            String castMember;
-            String movieName;
+        else if("geek_term".equals(type)){
 
-            if(word.contains("actor") || word.contains("actress"))
-            {
-                castMember = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
-            }
-            else if(word.contains("movie")){
-                movieName = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
-            }
+            String term = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
 
-            query = getQuery("movie", "Movie", "Movie");
+            query = getQuery("term", term, "Movie");
         }
         else if("trivia".equals(type)){
             if ("question".equals(word)) {
                 do{
-                    questionNo = ThreadLocalRandom.current().nextInt(1,4+1);
+                    questionNo = ThreadLocalRandom.current().nextInt(1,25+1);
                     System.out.println(questionNo);
                 }while(askedQuestion.contains(questionNo));
                 askedQuestion.add(questionNo);
@@ -96,6 +84,9 @@ public class Bot {
             case "trivia_answer":
                 query = new Query("trivia_answer", new Term[]{new Atom(questionNo),
                         new Atom(result), queryAnswer});
+                break;
+            case "term":
+                query = new Query("term", new Term[]{new Atom(questionNo),queryAnswer});
                 break;
             default:
                 query = new Query(keyword, new Term[] {queryAnswer});

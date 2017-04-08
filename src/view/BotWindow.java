@@ -15,7 +15,7 @@ public class BotWindow {
 	private JTextField query;
 	private DefaultListModel<String> listItems;
 	private JRadioButton rdbtnTrivia;
-	private JRadioButton rdbtnMovie;
+	private JRadioButton rdbtnGeekTerm;
 	private JRadioButton rdbtnGeneral;
     private Bot bot = new Bot();
 	private final ButtonGroup topicSelector = new ButtonGroup();
@@ -32,6 +32,7 @@ public class BotWindow {
 
 		// Layouts
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("res\\robot.png"));
 		frame.setTitle("Simple Bot");
 		frame.setBounds(100, 100, 640, 360);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +58,8 @@ public class BotWindow {
 		JList<String> list = new JList<>(listItems);
 		list.setFont(new Font("Serif", Font.ITALIC, 14));
 		scrollPane.setViewportView(list);
-		//list.setCellRenderer(new QueryRenderer());
+		//list.setCellRenderer(new MyListCellThing());
+
 		
 		query = new JTextField();
 		query.setToolTipText("Write Here. Ex: who are you");
@@ -77,10 +79,10 @@ public class BotWindow {
 		topicSelector.add(rdbtnGeneral);
 		sidePanel.add(rdbtnGeneral);
 		
-		rdbtnMovie = new JRadioButton("Movie");
-		rdbtnMovie.setFont(new Font("Serif", Font.BOLD, 13));
-		topicSelector.add(rdbtnMovie);
-		sidePanel.add(rdbtnMovie);
+		rdbtnGeekTerm = new JRadioButton("Geek Term");
+		rdbtnGeekTerm.setFont(new Font("Serif", Font.BOLD, 13));
+		topicSelector.add(rdbtnGeekTerm);
+		sidePanel.add(rdbtnGeekTerm);
 		
 		rdbtnTrivia = new JRadioButton("Geek Trivia");
 		rdbtnTrivia.setFont(new Font("Serif", Font.BOLD, 13));
@@ -105,12 +107,12 @@ public class BotWindow {
 			}
 		});
 
-		rdbtnMovie.addActionListener(new ActionListener() {
+		rdbtnGeekTerm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnMovie.isSelected()){
-					listItems.add(listItems.size(), "Movie Discussion is now selected");
-					System.out.println("Movie Selected");
+				if(rdbtnGeekTerm.isSelected()){
+					listItems.add(listItems.size(), "Geek Term is now selected");
+					System.out.println("Geek Term Selected");
 				}
 			}
 		});
@@ -147,8 +149,8 @@ public class BotWindow {
 			querySubmitAction("trivia");
 			trivia_question();
 		}
-		else if(rdbtnMovie.isSelected()){
-			querySubmitAction("movie");
+		else if(rdbtnGeekTerm.isSelected()){
+			querySubmitAction("geek_term");
 		}
 	}
 
