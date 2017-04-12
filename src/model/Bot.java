@@ -29,16 +29,21 @@ public class Bot {
     {
 		DefaultListModel<String> listItems = new DefaultListModel<>();
         Query query = null;
-
+        word = word.replace("?","");
+        word = word.replace(".","");
+        word = word.toLowerCase();
         if ("general".equals(type)) {
+
             String queryKeyword = databaseController.getFact(word);
             query = getQuery(queryKeyword, queryKeyword, queryKeyword);
         }
         else if("geek_term".equals(type)){
-
-            String term = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
-
-            query = getQuery("term", term, "Movie");
+            if(word.equals("show all")){
+                query = getQuery("showterm", "term", "Movie");
+            }else{
+                String term = word.substring(word.indexOf("\'")+1, word.lastIndexOf("\'"));
+                query = getQuery("term", term.toLowerCase(), "Movie");
+            }
         }
         else if("trivia".equals(type)){
             if ("question".equals(word)) {
@@ -58,12 +63,19 @@ public class Bot {
 
         if(query != null && query.hasSolution()){
             Map<String, Term> solution;
+            StringBuilder Allanswer= new StringBuilder();
             while ( query.hasMoreSolutions() ){
                 solution = query.nextSolution();
                 String answer = solution.get("Answer").toString();
                 answer = answer.replace("\'","");
-                listItems.addElement(answer);
+                if(word.equals("show all")){
+                    Allanswer.append(answer).append(",");
+                }
+                else{
+                    Allanswer.append(answer);
+                }
             }
+            listItems.addElement(Allanswer.toString());
         }
         else{
         	listItems.addElement("There is no solution here");
@@ -87,6 +99,9 @@ public class Bot {
                 break;
             case "term":
                 query = new Query("term", new Term[]{new Atom(questionNo),queryAnswer});
+                break;
+            case "showterm":
+                query = new Query("term", new Term[]{queryAnswer, new Variable("_")});
                 break;
             default:
                 query = new Query(keyword, new Term[] {queryAnswer});

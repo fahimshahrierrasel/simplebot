@@ -1,4 +1,6 @@
 % General Statement
+ai(X):-
+  X = 'Artificial Intelligence (AI) is usually defined as the science of making computers do things that require intelligence when done by humans.'.
 hello(X):-
 	X = 'Hello Welcome to the bot world!'.
 myname(X):-
@@ -16,12 +18,45 @@ whoami(X):-
 mystate(X):-
   X = 'I am Well, CPU is Ideal and I have enough RAM to run. Thanks for asking.'.
 webcam(X):-
-  X = 'Here You are.'.
+  X = 'Actually the webcam is actve. I am not watching you NSA does.'.
+myeat(X):-
+  X = 'Of Course not, I am robot you know.'.
+mywalk(X):-
+  X = 'Do you see any leg on me? Stop asking stupid questions!'.
+fahim(X):-
+  X = 'Fahim developed my Frontal, Parietal and Occipital Lobe. Wait, Do I have a brain?'.
+birat(X):-
+  X = 'He developed my Temporal Lobe. Well, Personally I do not know him very much.'.
+raisul(X):-
+  X = 'Oh boy! Do I have to talk about him. He contributed a lot to develop me that I forget what he did.'.
+gender(X):-
+  X = 'If bot have any gender, Then I would Female.'.
+ewu(X):-
+  X = 'Where are we right now? East West University.'.
+pusa(X):-
+  X = '"Make America Great Again"-Donald Trump.'.
+bd(X):-
+  X = 'You remind me about the beautiful country Bangladesh, You should see the yourself;.'.
+
 % Geek Terms
-term('ASAP', X):-
+term(asap, X):-
   X = 'As Soon As Possible'.
-term('MOS', X):-
- X = 'MOS (short for Mean Opinion Score) is a common Internet/voice telephony measurement of human speech quality at the destination end of the circuit.'.
+term(mos, X):-
+  X = 'MOS (short for Mean Opinion Score) is a common Internet/voice telephony measurement of human speech quality at the destination end of the circuit.'.
+term(ods, X):-
+  X = 'An ODS (short for Operational Data Store) is a type of database designed for quick and efficient queries of time-sensitive and/or transactional data (outside of the static data environment of a normal data warehouse).'.
+term(octal, X):-
+  X = 'Octal is a base-8 number system (0, 1, 2, 3, 4, 5, 6, and 7) that is a shorthand method for representing binary characters that use six bits.'.
+term(man, X):-
+  X = 'MAN (short for Metropolitan Area Network) is a communications/data network that encompasses a geographical area like a city, town, or suburb.'.
+term(heap, X):-
+  X = 'In the context of programming, a Heap is an area of memory that is created for, and available to a running program to use as needed.'.
+term(binhex, X):-
+  X = 'BinHex is an older encoding scheme that converts binary or bit-stream data and files into ASCII characters. Because most computers were able to handle ASCII files at that time, the format was especially valuable for transferring files from one platform to another.'.
+term(spamdress, X):-
+  X = 'A Spamdress (short for Spam Address or Spam Email Address) is a particular type of secondary email address that is created and used for the purposes of receiving newsletters or online subscriptions, joining discussion forums, website sign-ups, etc. where frequent or a high volume of email is expected.'.
+term(hypervisior, X):-
+  X = 'A Hypervisor (a.k.a. Virtualization Manager and Virtual Machine Manager) is a software program that allows a user to run multiple guest operating systems (or multiple instances of the same operating system) on a single computer at the same time.'.
 
 
 % Trivia Questions
