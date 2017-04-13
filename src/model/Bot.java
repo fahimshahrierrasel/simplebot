@@ -15,6 +15,7 @@ public class Bot {
     private ArrayList<Integer> askedQuestion = new ArrayList<>();
     int questionNo;
 	public Bot(){
+	    // Change The Following File To Locate The db.pl file in your pc
 		if(!Query.hasSolution("consult(\'C:/Users/Fahim Shahrier Rasel/EclipseWorkspace/Simple Bot/prolog/db.pl\')."))
         {
             System.out.println("Consult Failed!!");

@@ -16,6 +16,7 @@ public class DatabaseController
 
     private void connectDatabase(){
         try {
+            // Change The following file to locate the ProjectAI.db file.
             String databaseUrl = "jdbc:sqlite:C:/Users/Fahim Shahrier Rasel/EclipseWorkspace/Simple Bot/database/ProjectAI.db";
             this.connection = DriverManager.getConnection(databaseUrl);
             System.out.println("Database Connection Successful!!");
